@@ -1,10 +1,13 @@
 /******************************************************************************
 # Author:           Ty Dolyniuk
-# Assignment:       A1 Sample (CS161A)
+# Assignment:       A1 (CS161A)
 # Date:             February 25, 2025
-# Description:      ()
-# Input:            (What the program asks for, and data type, e.g., string)
-# Output:           (Summary of messages displayed by the program)
+# Description:      This program will read employeeID, hoursWorked, hourlyRate,
+#                   federalWithholdingRate from user and calculate totalGrossPay,
+#                   federalTaxWithholding, and netPay
+# Input:            int employeeID, hoursWorked, hourlyRate,
+#                   federalWithholdingRate
+# Output:           int totalGrossPay, federalTaxWithholding, netPay
 # Sources:          Assignment 1 specifications
 #******************************************************************************/
 
