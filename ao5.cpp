@@ -6,7 +6,7 @@
 #                   calculate the statistics for amount of people, total cost,
 #                   and averages.
 # Input:            int numPeople, float avgSlicePerPerson, costPerPizza, char c
-# Output:           int numberEntries, totalPizzaCoumt, maxPeople, float maxCost
+# Output:           int numberEntries, totalPizzaCount, maxPeople, float maxCost
 # Sources:          Assignment 5 specifications, textbook
 #******************************************************************************/
 
