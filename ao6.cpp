@@ -19,7 +19,7 @@ int main() {
     float balance = 0;
     bool next = true;
 
-    cout << "Welcome to my Coffe/Tea Vending Machine!" << endl;
+    cout << "Welcome to my Coffee/Tea Vending Machine!" << endl;
     cout << fixed << setprecision(2);
 
     while (next) {
