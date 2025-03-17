@@ -1,0 +1,130 @@
+/******************************************************************************
+# Author:           Ty Dolyniuk
+# Assignment:       A7 (CS161A)
+# Date:             March 16, 2025
+# Description:      
+# Input:            
+# Output:           
+# Sources:          Assignment 7 specifications, textbook
+#******************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void welcome();
+int readInt(string prompt);
+void readScore(string prompt, double &num);
+double assignAverage(int numAssigns);
+void getInput(double &midtermScore, double &finalExamScore);
+double calcFinalScore(double assignAvg, double midterm, double final);
+void calcLetterGrade(double finalScore, char &letter);
+
+int main() {
+    int numberOfAssignments;
+    double assignmentAvg, midtermScore, finalExamScore, finalScore;
+    char letterGrade;
+    welcome();
+        while(true) {
+        numberOfAssignments = readInt("Enter the number of assignments (0 to 10): ");
+        if(numberOfAssignments >= 10 || numberOfAssignments <= 0)
+        cout << "Illegal Value! please try again!!" << endl;
+        else break;
+    }
+    // Read and calculate average assignment score
+    assignmentAvg = assignAverage(numberOfAssignments);
+
+    // Read midterm and final exam scores
+    getInput(midtermScore, finalExamScore);
+
+    // Calculate final score
+    finalScore = calcFinalScore(assignmentAvg, midtermScore, finalExamScore);
+
+    // Determine and print letter grade
+    calcLetterGrade(finalScore, letterGrade);
+    cout<<"\nYour Final Numeric Score is "<<setprecision(2) <<finalScore<<endl;
+    cout << "Your Final Grade is: " << letterGrade << endl;
+    cout<<"\nThank you for using my Grade Calculator!"<<endl;
+    return 0;
+}
+
+void welcome() {
+    cout << "Welcome to my Final Grade Calculator!\n";
+    cout<<"Please enter the following information and I will calculate your \n";
+    cout<<"Final Numerical Grade and Letter Grade for you! \n";
+    cout<<"The number of assignments must be between 0 and 10. \n";
+    cout<<"All scores entered must be between 0 and 4."<<endl;
+}
+
+// Function to read integers from user
+int readInt(string prompt) {
+    int input;
+    cout << prompt;
+    cin >> input;
+
+    // Validate input is an integer
+    while(cin.fail()) {
+        cout << "Invalid input. Please enter an integer: ";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> input;
+    }
+
+    return input;
+}
+
+// Function to read scores from user
+void readScore(string prompt, double &num) {
+    cout << prompt;
+    cin >> num;
+
+    // Validate input is a number and within range of 0 to 4
+    while(cin.fail() || num < 0 || num > 4) {
+        cout << "Invalid input. Please try again!"<<endl;
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << prompt;
+        cin >> num;
+    }
+}
+
+// Function to read and calculate average assignment score
+double assignAverage(int numAssigns) {
+    double totalScore = 0;
+
+    // Read assignment scores
+    for(int i = 1; i <= numAssigns; i++) {
+        double assignScore;
+        readScore("Enter score " + to_string(i) + ": ", assignScore);
+        totalScore += assignScore;
+    }
+
+    // Calculate and return average score
+    return totalScore / numAssigns;
+}
+
+// Function to read midterm and final exam scores
+void getInput(double &midtermScore, double &finalExamScore) {
+    readScore("Enter your midterm exam score: ", midtermScore);
+    readScore("Enter your final exam score: ", finalExamScore);
+}
+
+// Function to calculate final score
+double calcFinalScore(double assignAvg, double midterm, double final) {
+    return (assignAvg * 0.6) + (midterm * 0.2) + (final * 0.2);
+    }
+
+// Function to determine and print letter grade
+void calcLetterGrade(double finalScore, char &letter) {
+if(finalScore >= 3.3) {
+letter = 'A';
+} else if(finalScore >= 2.8) {
+letter = 'B';
+} else if(finalScore >= 2.0) {
+letter = 'C';
+} else if(finalScore >= 1.2) {
+letter = 'D';
+} else {
+letter = 'F';
+}
+}
